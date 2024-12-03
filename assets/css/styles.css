@@ -1,0 +1,776 @@
+/*=============== GOOGLE FONTS ===============*/
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+@font-face {
+  font-family: "Gandhara Suls Regular";
+  src: url(/assets/fonts/Gandhara\ Suls\ Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: 'Mehr_Nastaliq_Web';
+  src: url(/assets/fonts/Mehr_Nastaliq_Web\ v.\ 2.0.ttf);
+}
+
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: #b80707;
+  --footer-separator: #b8070766;
+  --title-color: hsla(0, 0%, 100%, 0.844);
+  /* --text-color: rgb(255, 253, 253); */
+  --text-color: hsla(0, 0%, 100%, 0.674);
+
+  --body-color: #161616;
+  /* --body-color: black; */
+  --container-color: #161616;
+
+  --border-color: hsl(230, 25%, 80%);
+
+
+  --pseudo-width:110px;
+
+  --pseudo-category:80%;
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --stylish-urdu: "Gandhara Suls Regular";
+  --normal-urdu: 'Mehr_Nastaliq_Web';
+  --h2-font-size: 1.6rem;
+  --normal-font-size: 1.15rem;
+  --small-font-size: .8rem;
+  --category-font-size: 2.5rem;
+
+
+  /*========== Font weight ==========*/
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== z index ==========*/
+  --z-fixed: 100;
+  --z-modal: 1000;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1023px) {
+  :root {
+    --h2-font-size: 1.8rem;
+    --normal-font-size: 1.3rem;
+    --small-font-size: 1.15rem;
+
+  }
+}
+
+@media screen and (min-width: 576px) {
+  :root {
+    --h2-font-size: 1.68rem;
+    --normal-font-size: 1.25rem;
+    --small-font-size: 1rem;
+
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background-repeat: no-repeat;
+
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+input,
+button {
+  font-family: var(--normal-urdu);
+
+  font-size: var(--normal-font-size);
+}
+
+body {
+  background: var(--body-color);
+  background-repeat: no-repeat;
+  color: var(--text-color);
+}
+
+/* input,
+button {
+  border: none;
+  outline: none;
+} */
+
+.nav__list {
+  font-family: var(--stylish-urdu);
+  list-style: none;
+}
+
+.nav__link {
+  font-weight: var(--font-semi-bold);
+  text-decoration: none;
+  color: var(--text-color)
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+/*=============== HEADER & NAV ===============*/
+.header {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  background: var(--body-color);
+  z-index: var(--z-fixed);
+
+}
+.story{
+  position: fixed;
+  width: 100%;
+  height: .2vh;
+  z-index: 99;
+}
+.story__fill{
+  width: 0;
+  height: 100%;
+  background-image: linear-gradient(red, orange);
+}
+
+.nav {
+
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--body-color);
+
+}
+
+.nav__logo {
+  font-family: "Gandhara Suls Regular";
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  transition: color 0.4s;
+  text-decoration: none;
+}
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+/* .nav__search,
+.nav__login, */
+.nav__toggle,
+.nav__close {
+  font-size: 1.25rem;
+  color: var(--title-color);
+  cursor: pointer;
+  transition: color 0.4s;
+}
+
+.toggle__hidden{
+  display: none;
+}
+
+:is(.nav__logo, .nav__toggle, .nav__link):hover {
+  color: var(--first-color);
+}
+
+/* Navigation for mobile devices */
+@media screen and (max-width: 1023px) {
+  .nav__menu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    background: var(--body-color);
+    box-shadow: var(--body-color);
+    width: 100%;
+    padding-block: 4.5rem 4rem;
+    transition: top 0.4s;
+  }
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2.5rem;
+  text-align: center;
+}
+
+.nav__link {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  transition: color 0.4s;
+}
+
+.nav__close {
+  position: absolute;
+  top: 1.15rem;
+  right: 1.5rem;
+}
+
+/* Show menu */
+.show-menu {
+  top: 0;
+}
+
+
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+
+.main {
+  height: auto;
+  margin-top: 3.5rem;
+  overflow-x: hidden;
+  min-height: 100vh;
+  /* direction: rtl; */
+  width: 100%;
+  /* border: 5px solid yellow; */
+  /* position: relative; */
+
+  /* overflow: hidden; */
+  background: var(--body-color);
+
+}
+
+.cover {
+  display: flex;
+  /* flex-direction: row; */
+  background: url(/assets/img/leaves.jpg);
+  align-items: center;
+  justify-content: flex-end;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex-direction: row;
+  width: 100vw;
+  position: relative;
+
+  /* outline: 3px solid orange; */
+  height: 30vh;
+}
+
+.cover::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+}
+
+.cover__internal {
+  display: flex;
+  transform: translateX(300px);
+  opacity: 0;
+  margin-inline: .6rem;
+  flex-direction: row-reverse;
+  align-items: center;
+  /* position: relative; */
+  /* border: 5px solid red; */
+  z-index: 1;
+}
+
+.cover__internal {
+  animation-name: slide;
+  animation-duration: 1s;
+  animation-delay: 3s;
+  animation-iteration-count: 1;
+  animation-timing-function: cubic-bezier(0.93, 0.32, 0.63, 0.64);
+  animation-fill-mode: forwards;
+}
+
+@keyframes slide {
+
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+
+  }
+}
+
+
+.right__cover {
+  margin-left: 2rem;
+  /* outline: 2px solid black; */
+}
+
+.profile__pic {
+  width: 8rem;
+  border-radius: 50%;
+  border: 6px solid rgba(255, 255, 255, .3);
+}
+
+.left__cover {
+  /* outline: 2px solid black; */
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.left__cover>.poet__intro>.title {
+  color: var(--title-color);
+  font-size: var(--normal-font-size);
+  font-family: var(--stylish-urdu);
+  font-weight: var(--font-semi-bold);
+}
+
+.poet__bio>.birth__date {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+
+}
+
+.loaction,
+.birth__date {
+  direction: rtl;
+  width: 100%;
+}
+
+
+.birth__date {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  direction: rtl;
+}
+
+.poet__bio {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: var(--small-font-size);
+}
+
+.short__desc {
+  font-size: var(--small-font-size);
+  direction: rtl;
+}
+
+
+
+/*========================== Category ===========================*/
+
+.category__container {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category__title {
+  font-size: var(--category-font-size);
+}
+
+.category__list {
+  height: 100%;
+  list-style: none;
+  background: var(--body-color);
+  direction: rtl;
+  /* outline: 3px solid red; */
+  padding-top: 25px;
+  padding-bottom: 25px;
+
+
+}
+
+.category__unit {
+  margin-right: var(--header-height);
+  /* outline: 2px solid yellow; */
+  max-width: 852px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.category__unit::after {
+  position: absolute;
+  content: '';
+  bottom: -16px;
+  right: 2px;
+  width:var(--pseudo-category, 0%);
+  height: 1px;
+  background: #474747;
+}
+
+.unit__link {
+  font-size: var(--normal-font-size);
+  color: var(--text-color);
+  text-decoration: none;
+  /* outline: 2px solid red; */
+}
+
+
+/* ========================================INDIVIDUALS===================================== */
+
+.reading__content__container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items:  center;
+  /* justify-content: center; */
+  flex-direction: column;
+  text-align: justify;
+  padding: 20px 0px;
+}
+
+.shair, .band__mukhammas, .band__musaddas {
+  font-size: var(--h2-font-size);
+  max-width: 424px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.shair{
+  align-items: center;
+}
+
+.band__mukhammas, .band__musaddas{
+direction: rtl;
+align-items: right;
+min-width:  300px;
+}
+
+.band__musaddas{
+  /* outline: 1px solid red; */
+  margin-top: 2rem;
+}
+
+.band__bayt{
+  margin-top: 10px;
+  margin-right: 40px;
+  color: var(--first-color);
+}
+
+.last__mukhammas{
+  color: var(--first-color);
+}
+
+.mukhammas__misra, .musaddas__misra{
+  text-align: right;
+}
+
+.misra {
+  /* width: fit-content; */
+  /* outline: 1px solid green; */
+  text-align: center;
+}
+.rubayi{
+  text-align: center;
+}
+
+
+
+/* =====================MAIN INTRO SECTION==================================== */
+.home__description__content{
+  padding: 20px;
+}
+
+.featured__shair__wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* outline: 1px solid red; */
+  position: relative;
+  padding: 20px;
+}
+
+
+.featured__shair__wrapper::after{
+  content: '';
+  position: absolute;
+  border-top-style: solid;
+  border-color: var(--text-color);
+  opacity: 15%;
+  /* top: -5px;
+  left: 5px; */
+  width: var(--pseudo-width, 0%);
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* background: var(--footer-separator); */
+  height: 1.5px;
+  
+}
+
+
+.view__complete{
+  /* outline: 1px solid red; */
+  display: flex;
+  align-items: baseline;
+  justify-content: space-evenly;
+  width: 120px;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: var(--font-regular);
+  font-size: var(--normal-font-size);
+  color: var(--first-color);
+  text-decoration: none;
+}
+.ri-book-line{
+  color: var(--first-color);
+  
+}
+.featured__misra{
+  text-align: center;
+ font-size: var(--h2-font-size);
+  font-weight: var(--font-regular);
+  color: var(--text-color);
+}
+
+.intekhaab{
+  padding: 8px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: var(--font-regular);
+  font-size: var(--h2-font-size);
+  color: var(--title-color);
+}
+
+
+
+
+/*======================== FOOTER=========================== */
+footer {
+  /* border-top: 2px solid #fff; */
+ position: relative;
+  text-align: center;
+  padding: 2rem 0rem;
+  font-family: 'Raleway';
+  font-size: var(--small-font-size);
+  background: #000;
+  height: auto;
+}
+
+/* footer::before {
+  content: '';
+  position: absolute;
+  border-top-style: solid;
+  border-color: var(--footer-separator);
+  width: 100%;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 1px;
+} */
+
+.footerlink{
+  padding: 0px 10px;
+  color: var(--title-color);
+  text-decoration: none;
+  font-size: var(--normal-font-size);
+  transition: color ease 0.25s;
+}
+.footerlink:hover{
+color: var(--first-color);
+}
+
+
+/*=============== BREAKPOINTS ===============*/
+/* For medium devices */
+@media screen and (min-width: 576px) {
+
+  .cover__internal {
+    margin-inline: 3rem;
+  }
+
+  /* .search,
+  .login {
+    padding-top: 10rem;
+  }
+
+  .search__form {
+    max-width: 450px;
+    margin-inline: auto;
+  }
+
+  .search__close,
+  .login__close {
+    width: max-content;
+    top: 5rem;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    font-size: 2rem;
+  }
+
+  .login__form {
+    max-width: 400px;
+    margin-inline: auto;
+  } */
+}
+
+/* For large devices */
+@media screen and (min-width: 1023px) {
+  .main {
+
+    margin-top: 5.9rem;
+  }
+
+  .cover {
+    height: 42vh;
+
+  }
+
+  .cover__internal {
+    margin-inline: 6rem;
+  }
+
+  .profile__pic {
+    width: 10rem;
+  }
+
+
+  .nav {
+    height: calc(var(--header-height) + 2rem);
+    column-gap: 3rem;
+  }
+
+  .nav__close,
+  .nav__toggle {
+    display: none;
+  }
+
+  .nav__menu {
+    margin-left: auto;
+  }
+
+  .nav__list {
+    flex-direction: row;
+    column-gap: 3rem;
+  }
+
+  .login__form {
+    padding: 3rem 2rem 3.5rem;
+  }
+}
+
+@media screen and (min-width: 1150px) {
+  .container {
+    margin-inline: auto;
+  }
+
+}
+
+/* SHUJA================================= */
+
+/* @media screen and (max-width: 430px) {
+  :root {
+    --h2-font-size: .9rem;
+    --normal-font-size: .7rem;
+  }
+  
+}
+
+@media screen and (max-width: 405px) {
+  .location, .birth__date{
+    width: 67px;
+  }
+} */
+
+
+
+/* =========================LOADING SCREEN====================== */
+
+
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity .5s ease-out;
+  
+}
+
+#loading-screen svg {
+	max-width: 270px;
+	margin-left: 10px;
+  margin-right: 10px;
+	position: relative;
+	transition: all 0.5s ease-in-out;
+  
+}
+
+#loading-screen svg .ekg {
+	fill: none;
+	stroke: var(--first-color);
+	stroke-width: 5;
+	stroke-linecap: round;
+	stroke-linejoin: miter;
+	opacity: 0;
+	stroke-dashoffset: 1000;
+	stroke-dasharray: 1000;
+	animation: ekg 1.5s linear forwards infinite;
+  
+}
+
+#loading-screen.fade-out {
+  opacity: 0;
+}
+
+@keyframes ekg {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    stroke-dashoffset: 2000;
+  }
+  99% {
+    opacity: 0;
+    stroke-dashoffset: 3000;
+  }
+  100% {
+    stroke-dashoffset: 1000;
+  }
+}
+
+
+
+
+
+
+
